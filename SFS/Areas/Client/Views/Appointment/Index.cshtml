@@ -1,0 +1,55 @@
+﻿@model IEnumerable<SFS.Models.Appointment>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+@* <p>
+    <a asp-action="Create">Create New</a>
+</p> *@
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Schedule.Class.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Schedule.StartTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Schedule.EndTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AppointmentDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        
+
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Schedule.Class.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Schedule.StartTime)
+            </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Schedule.EndTime)
+                </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AppointmentDate)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.AppointmentId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.AppointmentId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.AppointmentId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

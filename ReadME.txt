@@ -1,0 +1,2 @@
+Please create the database and apply migrations from Nuget Package Manager Console, before trying to run the application. 
+The application won't run unless there is a database available. Keep that in mind.

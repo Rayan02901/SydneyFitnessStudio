@@ -1,0 +1,67 @@
+﻿@model IEnumerable<SFS.Models.Schedule>
+
+@{
+    ViewData["Title"] = "Schedule Overview";
+}
+
+<div class="text-center mb-5">
+    <h1 class="display-4">Welcome to Sydney Fitness Studio</h1>
+    <p>Check out our upcoming schedules for fitness classes and book your spot!</p>
+</div>
+
+<div class="row pb-3">
+    @foreach (var schedule in Model)
+    {
+        <div class="col-lg-3 col-sm-6">
+            <div class="row p-2">
+                <div class="col-12 p-1">
+                    <div class="card border-0 p-3 shadow  border-top border-5 rounded">
+                        <!-- Displaying the class associated with the schedule -->
+                        <div class="card-body pb-0">
+                            <div class="pl-1">
+                                <!-- Displaying the Class Name -->
+                                <p class="card-title h5 text-dark opacity-75 text-uppercase text-center">
+                                    Class: @schedule.Class.Name
+                                </p>
+                                <!-- Displaying Instructor Name -->
+                                <p class="card-title text-warning text-center">Instructor: <b>@schedule.Teacher.Name</b></p>
+                            </div>
+                            <div class="pl-1">
+                                <!-- Displaying Start Time -->
+                                <p class="text-dark text-opacity-75 text-center mb-0">
+                                    Start Time: <b>@schedule.StartTime.ToString("g")</b>
+                                </p>
+                            </div>
+                            <div class="pl-1">
+                                <!-- Displaying End Time -->
+                                <p class="text-dark text-opacity-75 text-center mb-0">
+                                    End Time: <b>@schedule.EndTime.ToString("g")</b>
+                                </p>
+                            </div>
+                            <div class="pl-1">
+                                <!-- Displaying Max Capacity -->
+                                <p class="text-dark text-opacity-75 text-center">
+                                    Max Capacity:
+                                    <b>@schedule.MaxCapacity</b>
+                                </p>
+                            </div>
+                        </div>
+                        <!-- Action button -->
+                        <div>
+                            @*   <a href="/client/home/details?id=@schedule.ScheduleId" class="btn btn-primary bg-gradient border-0 form-control">
+                        View Details
+                        </a> *@
+                            <a asp-action="Details" asp-route-scheduleId="@schedule.ScheduleId" class="btn btn-primary bg-gradient border-0 form-control">
+                                View Details
+                            </a>
+                            <a asp-area="Client" asp-controller="Appointment" asp-action="Create" asp-route-scheduleId="@schedule.ScheduleId" class="btn btn-info bg-gradient border-0 form-control">
+                                Enroll
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

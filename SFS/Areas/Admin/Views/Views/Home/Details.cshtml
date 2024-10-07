@@ -1,0 +1,79 @@
+﻿@model SFS.Models.Schedule
+
+<form method="post">
+    <div class="card shadow border-0 mt-4 mb-4">
+        <div class="card-header bg-secondary bg-gradient text-light py-4">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h3 class="text-white text-uppercase">Class: @Model.Class.Name</h3>
+                    <p class="text-white-50 fw-semibold mb-0">Instructor: @Model.Teacher.Name</p>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="py-3">
+                <div class="row">
+                    <div class="col-6 col-md-2 offset-lg-1 pb-1">
+                        <a asp-action="Index" class="btn btn-outline-primary bg-gradient mb-5 fw-semibold btn-sm text-uppercase">
+                            <small>Back to schedules</small>
+                        </a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-lg-8 offset-lg-2">
+                        <div class="col-12 col-md-6 pb-4">
+                            <span class="badge bg-info">@Model.Class.Name</span>
+                        </div>
+                        <div class="row ps-2">
+                            <h6 class="text-dark text-opacity-50 ">Instructor: @Model.Teacher.Name</h6>
+                        </div>
+                        <div class="row ps-2">
+                            <h6 class="text-dark text-opacity-50  pb-2">
+                                Start Time:
+                                <span class="text-primary">
+                                    @Model.StartTime.ToString("g")
+                                </span>
+                            </h6>
+                        </div>
+                        <div class="row ps-2">
+                            <h6 class="text-dark text-opacity-50  pb-2">
+                                End Time:
+                                <span class="text-primary">
+                                    @Model.EndTime.ToString("g")
+                                </span>
+                            </h6>
+                        </div>
+                        <div class="row ps-2">
+                            <h6 class="text-dark text-opacity-50  pb-2">
+                                Max Capacity: <span class="text-primary">@Model.MaxCapacity</span>
+                            </h6>
+                        </div>
+                        <div class="row text-center ps-2">
+                            <div class="p-1 col-12 bg-white text-center border-bottom">
+                                <div class="text-dark text-opacity-50 fw-semibold">
+                                    Description: <p class="text-secondary lh-sm">@Html.Raw(Model.Class.Description)</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Additional Information -->
+                        <div class="row pl-2 my-3">
+                            <p class="text-secondary lh-sm">
+                                This class is led by our experienced instructor, <b>@Model.Teacher.Name</b>.
+                                Be sure to attend and take advantage of a great fitness experience!
+                            </p>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-md-6 pb-1">
+                                <a href="@Url.Action("Index", "Home", new { area = "Client" })"
+                                   class="btn btn-primary bg-gradient w-100 py-2 text-uppercase fw-semibold">
+                                    Back to Schedules
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

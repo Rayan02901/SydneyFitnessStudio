@@ -1,0 +1,25 @@
+﻿@model IEnumerable<SFS.Models.ViewModels.ScheduleSummaryViewModel>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Class Name</th>
+            <th>Teacher Name</th>
+            <th>Start Time</th>
+            <th>End Time</th>
+            <th>Appointment Count</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ClassName</td>
+                <td>@item.TeacherName</td>
+                <td>@item.StartTime.ToString("g")</td>
+                <td>@item.EndTime.ToString("g")</td>
+                <td>@item.AppointmentCount</td>
+            </tr>
+        }
+    </tbody>
+</table>
